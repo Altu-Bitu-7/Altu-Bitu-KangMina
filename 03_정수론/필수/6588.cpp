@@ -5,7 +5,7 @@
 using namespace std;
 const int MAX = 1000000; // 테스트 케이스 및 n의 최대 범위
 
-// n 이하의 홀수인 소수를 찾는다. (에라토스테네스의 채)
+// n 이하의 홀수인 소수를 찾는다. (에라토스테네스의 체)
 void findOddPrime(vector<bool> &primes, int n){
     primes[0] = primes[1] = false;  // 0과 1은 소수가 아님
 
