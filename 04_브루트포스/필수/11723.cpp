@@ -24,12 +24,17 @@ int check(int &s, int x){    // s의 인덱스 x인 비트 필드가 0이면 0, 
     return answ;
 }
 void toggle(int &s, int x){   
+    /*
     if (check(s,x)){  // s의 인덱스 x인 비트 필드가 0이면 1로 만든다.
         remove(s,x);
     }
     else {  // s의 인덱스 x인 비트 필드가 1이면 0으로 만든다.
         add(s,x);
     }
+    */
+   // xor 연산자 이용 (0 xor 1 = 1, 1 xor 1=0)을 이용
+    int temp = 1 << x;
+    s = s ^ temp;
 }
 
 int main(){
