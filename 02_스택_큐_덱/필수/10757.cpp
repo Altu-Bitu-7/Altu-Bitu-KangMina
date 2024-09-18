@@ -1,5 +1,4 @@
 // 큰 수 A+B
-// 어디서 틀린건지 찾아야함
 #include <iostream>
 #include <vector>
 
