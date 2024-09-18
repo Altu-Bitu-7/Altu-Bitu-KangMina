@@ -4,8 +4,10 @@
 
 using namespace std;
 
-bool checkIsBalanced(string line, stack<char>& bracket){
-    for (auto i:line){
+bool checkIsBalanced(string line){
+    stack<char> bracket;    // 괄호 균형 판단할 스택 초기화
+
+    for (auto i : line){
         // '[', '('가 들어오면 스택 bracket에 넣음 
         if (i == '[' || i == '('){
             bracket.push(i);
@@ -27,7 +29,8 @@ bool checkIsBalanced(string line, stack<char>& bracket){
             }
         }
     }
-    return (true);
+
+    return (bracket.empty());   // 마지막으로 bracket이 비어있는지 확인
 }
 
 int main(){
@@ -39,12 +42,12 @@ int main(){
     bool is_balanced;   // 균형잡힌 문자열인지 아닌지
     string answ;    // 출력할 yes 혹은 no
     
+/*
     // 입력
     getline(cin, line); // line 변수에 '\n' 기준으로 입력받음
     
     while(line != "."){
-        stack<char> bracket;    // 괄호 균형 판단할 스택 초기화
-        is_balanced = checkIsBalanced(line, bracket);   // is_balanced 판단
+        is_balanced = checkIsBalanced(line);   // is_balanced 판단
         getline(cin, line); // 다음 줄 입력받음
             
         // 출력
@@ -52,6 +55,19 @@ int main(){
         answ = (is_balanced && bracket.empty())? "yes": "no";
         cout << answ << '\n';
     }
+*/
+    while(true){
+        getline(cin, line); // line 변수에 '\n' 기준으로 입력받음
+
+        if (line == "."){
+            break;
+        }
+
+        is_balanced = checkIsBalanced(line);   // is_balanced 판단
+        answ = (is_balanced)? "yes": "no";
+        cout << answ << '\n';
+    }
+
 
     return 0;
 }
