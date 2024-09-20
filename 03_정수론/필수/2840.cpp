@@ -25,7 +25,7 @@ int main(){
         cin >> in_int >> in_char;
         ptr = (ptr + in_int) % n;
 
-        else if (wheel[ptr] == '?'){ 
+        if (wheel[ptr] == '?'){ 
             // 현재 화살표가 가리키는 칸에 정해진 알파벳이 없는 경우  
             if (wheel_char.find(in_char) != wheel_char.end()){  
                 // 바퀴에 같은 글자가 등장하는 경우

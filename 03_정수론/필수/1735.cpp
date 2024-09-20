@@ -16,17 +16,17 @@ int getLcm(int b1, int b2){
     return b1 * b2 / getGcd(b1, b2);
 }
 
+// 분자를 더한다
 int sumFraction(int a1, int b1, int a2, int b2, int lcm){
     int tmp = (a1 * (lcm / b1)) + (a2 * (lcm / b2));
     return tmp;
 }
 
+// 기약분수인지 확인하고, 아니라면 기약분수로 만든다.
 void checkGCF(int & ans_a, int & ans_b){
-    int tmp = getGcd(ans_a, ans_b);
-    if (tmp != 1){
-        ans_a /= tmp;
-        ans_b /= tmp;
-    }
+    int gcd = getGcd(ans_a, ans_b);
+    ans_a /= gcd;
+    ans_b /= gcd;
 }
 
 int main(){
