@@ -5,8 +5,8 @@ using namespace std;
 
 // 0은 빈 칸, 1은 벽, 2는 바이러스
 // 새로 세울 수 있는 벽의 개수는 3개이며, 꼭 3개를 세워야 한다.
-int lab[8][8];  // 입력받은 원본 실험실 상황
-int lab_test[8][8]; // 바이러스 퍼뜨려서 개수 셀 떄 사용
+int lab[9][9];  // 입력받은 원본 실험실 상황
+int lab_test[9][9]; // 바이러스 퍼뜨려서 개수 셀 떄 사용
 int moving[4][2] = { {-1,0}, {1,0}, {0,-1}, {0,1} };    // 상하좌우 탐색
 int virus[64][2];   // 바이러스들의 위치 저장
 int n;  // n: 연구소의 세로 크기 (3이상 8이하)
@@ -98,8 +98,8 @@ int main(){
     // 입력
     cin >> n >> m;
     int v_cnt = 0;
-    for (int i = 0; i < n; i++) {
-        for (int j = 0; j < m; j++) {
+    for (int i = 1; i <= n; i++) {
+        for (int j = 1; j <= m; j++) {
             cin >> lab[i][j];
             lab_test[i][j] = lab[i][j];
 
