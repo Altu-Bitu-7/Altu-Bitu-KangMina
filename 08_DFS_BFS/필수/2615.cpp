@@ -6,7 +6,7 @@ using namespace std;
 const int SIZE = 19;    
 typedef pair<int, int> location;
 int ground[SIZE][SIZE]; // (0~18) * (0~18) 바둑판 (인덱스 주의)
-int moving[4][2] = {{0,1}, {1,0}, {1,1}, {-1,1}};  // 오른쪽, 아래, 우하향 대각선, 우상향 대각선 <- 가장 위쪽 돌의 좌표 구해야 하니까 이 네방향 탐색한다
+int moving[4][2] = {{0,1}, {1,0}, {1,1}, {-1,1}};  // 오른쪽, 아래, 우하향 대각선, 우상향 대각선 <- 가장 왼쪽 돌의 좌표 구해야 하니까 이 네방향 탐색한다
 bool visited[SIZE][SIZE][4][2]; // [x][y][moving][1/2] : (x,y)자리에서 검은색/흰색 돌에 대해 moving 방향의 탐색 했는지 여부
 
 // 오목인지 탐색한다.
@@ -48,7 +48,7 @@ int findWinner(location &answ_loc){
 
                 // 이미 해당 위치, 돌, 방향을 탐색했다면 넘어간다.
                 if (visited[j][i][dir][ground[j][i]]) continue;
-                
+
                 // 해당 방향으로 탐색한 결과가 검이든 흰이든 오목이 나오면
                 if (dfs(j, i, dir, ground[j][i], 1) != 0) {
                     answ_loc = {j, i};  // 오목의 가장 위쪽 돌 위치
@@ -66,7 +66,7 @@ int main(){
     ios_base::sync_with_stdio(0);
     cin.tie(0); cout.tie(0);
 
-    location answ_loc;   // answ_loc: 오목 중에서 가장 위쪽에 있는 바둑알
+    location answ_loc;   // answ_loc: 오목 중에서 가장 왼쪽에 있는 바둑알
 
     // 입력
     for (int i = 0; i < SIZE; i++){
