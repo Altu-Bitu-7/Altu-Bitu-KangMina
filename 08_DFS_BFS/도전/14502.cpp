@@ -101,11 +101,11 @@ int main(){
     for (int i = 0; i < n; i++) {
         for (int j = 0; j < m; j++) {
             cin >> lab[i][j];
-            cin >> lab_test[i][j];
+            lab_test[i][j] = lab[i][j];
 
             if (lab[i][j] == 2){
                 virus[v_cnt][0] = i;
-                virus[v_cnt][1] = i;
+                virus[v_cnt][1] = j;
                 v_cnt++;
             }
         }
