@@ -3,15 +3,32 @@
 #include <vector>
 #include <algorithm>
 using namespace std;
+const int MAX_NUM = 100001;  // 문제 내 수열 길이 최댓값 조건
 
-int solution(int n, int k, const vector<int> arr){
-    int left = 0, right = 0;
-    int max_len = 0;
+// 같은 정수를 k개 이하로 가지는 최장 연속 부분 수열의 길이 구하기
+int solution(const vector<int> arr, int k, int n){
+    // 초기화
+    int answ = 1;    // 시작 시점 길이: 0번째 원소만 포함
+    int left = 0, right = 1;    // 부분 수열의 왼쪽, 오른쪽 포인터. 왼쪽은 포함하고 오른쪽은 포함 안함
+    vector<int> count(MAX_NUM, 0);  // 수열 내 각 숫자의 개수
+    count[arr[left]]++; // (left = 0)의 해당 원소 개수 증가
 
-    len = left - right + 1;
-    max_len = max(max_len, len);
+    // 오른쪽 포인터가 수열 끝에 다다를 때까지
+    while (right < n){
+        // right를 오른쪽으로 증가하면서 right번째 숫자를 수열에 추가할 수 있는지 확인
+        if(count[arr[right]] >= k){ // right번째 숫자의 개수가 k 이상이면 추가 불가능
+            count[arr[left]]--; // left 숫자를 삭제
+            left++; // left 오른쪽으로 이동
+            continue;   // 다시 right 추가 가능한지 확인
+        }
 
-    return lmax_len;
+        // right 숫자를 수열에 추가 가능한 경우
+        count[arr[right]]++;    // right 숫자를 수열에 추가
+        right++;    // right 오른쪽으로 이동
+        answ = max(answ, right - left);   // 최대값 갱신
+    }
+
+    return answ;
 }
 
 int main(){
@@ -31,7 +48,7 @@ int main(){
     }
 
     // 연산
-    answ = solution(n, k, arr);
+    answ = solution(arr, k, n);
 
     // 출력
     cout << answ << '\n';
